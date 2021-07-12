@@ -1,6 +1,5 @@
 orbs:
   win: circleci/windows@1.0.0
-  codecov: codecov/codecov@1.0.5
 
 version: 2.1
 
@@ -20,10 +19,13 @@ commands:
         type: string
       GOVERSION:
         type: string
+      HOME:
+        type: string
+        default: "~"
     steps:
       - checkout
-      - run: curl https://dl.google.com/go/go<< parameters.GOVERSION >>.<< parameters.GOOS >>-amd64.tar.gz | tar -C ~/ -xz
-      - run: ~/go/bin/go test ./... -coverprofile=coverage.txt  -covermode=atomic
+      - run: curl https://dl.google.com/go/go<< parameters.GOVERSION >>.<< parameters.GOOS >>-amd64.tar.gz | tar -C << parameters.HOME >>/ -xz
+      - run: << parameters.HOME >>/go/bin/go test ./... -coverprofile=coverage.txt  -covermode=atomic
   install-go-run-tests-windows:
     parameters:
       GOVERSION:
@@ -61,8 +63,6 @@ jobs:
     steps:
       - checkout
       - run: TESTARGS="-coverprofile=coverage.txt  -covermode=atomic" make ci
-      - codecov/upload:
-          file: coverage.txt
   test-darwin:
     executor: darwin
     working_directory: ~/go/github.com/hashicorp/packer
@@ -70,8 +70,6 @@ jobs:
       - install-go-run-tests-unix:
           GOOS: darwin
           GOVERSION: "1.16"
-      - codecov/upload:
-          file: coverage.txt
   test-windows:
     executor:
       name: win/vs2019
@@ -79,8 +77,6 @@ jobs:
     steps:
       - install-go-run-tests-windows:
           GOVERSION: "1.16"
-      - codecov/upload:
-          file: coverage.txt
   check-lint:
     executor: golang
     resource_class: xlarge
@@ -90,15 +86,6 @@ jobs:
       - run:
           command: make ci-lint
           no_output_timeout: 30m
-  check-vendor-vs-mod:
-    executor: golang
-    working_directory: /go/src/github.com/hashicorp/packer
-    environment:
-      GO111MODULE: "off"
-    steps:
-      - checkout
-      - run: GO111MODULE=on go run . --help
-      - run: make check-vendor-vs-mod
   check-fmt:
     executor: golang
     steps:
@@ -207,7 +194,6 @@ workflows:
   check-code:
     jobs:
       - check-lint
-      - check-vendor-vs-mod
       - check-fmt
       - check-generate
   build_packer_binaries:

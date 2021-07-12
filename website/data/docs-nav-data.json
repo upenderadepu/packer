@@ -464,10 +464,6 @@
                 "title": "Date and Time Functions",
                 "routes": [
                   {
-                    "title": "Overview",
-                    "path": "templates/hcl_templates/functions/datetime"
-                  },
-                  {
                     "title": "formatdate",
                     "path": "templates/hcl_templates/functions/datetime/formatdate"
                   },
@@ -478,6 +474,10 @@
                   {
                     "title": "timestamp",
                     "path": "templates/hcl_templates/functions/datetime/timestamp"
+                  },
+                  {
+                    "title": "legacy_isotime",
+                    "path": "templates/hcl_templates/functions/datetime/legacy_isotime"
                   }
                 ]
               },
@@ -680,244 +680,12 @@
         "path": "builders"
       },
       {
-        "title": "Alicloud ECS",
-        "path": "builders/alicloud-ecs"
-      },
-      {
-        "title": "Azure",
-        "routes": [
-          {
-            "title": "Overview",
-            "path": "builders/azure"
-          },
-          {
-            "title": "ARM",
-            "path": "builders/azure/arm"
-          },
-          {
-            "title": "chroot",
-            "path": "builders/azure/chroot"
-          }
-        ]
-      },
-      {
-        "title": "CloudStack",
-        "path": "builders/cloudstack"
-      },
-      {
-        "title": "DigitalOcean",
-        "path": "builders/digitalocean"
-      },
-      {
         "title": "File",
         "path": "builders/file"
       },
       {
-        "title": "Google Cloud",
-        "path": "builders/googlecompute"
-      },
-      {
-        "title": "Hetzner Cloud",
-        "path": "builders/hetzner-cloud"
-      },
-      {
-        "title": "HyperOne",
-        "path": "builders/hyperone"
-      },
-      {
-        "title": "Hyper-V",
-        "routes": [
-          {
-            "title": "Overview",
-            "path": "builders/hyperv"
-          },
-          {
-            "title": "ISO",
-            "path": "builders/hyperv/iso"
-          },
-          {
-            "title": "VMCX",
-            "path": "builders/hyperv/vmcx"
-          }
-        ]
-      },
-      {
-        "title": "Linode",
-        "path": "builders/linode"
-      },
-      {
-        "title": "LXC",
-        "path": "builders/lxc"
-      },
-      {
-        "title": "LXD",
-        "path": "builders/lxd"
-      },
-      {
-        "title": "NAVER Cloud",
-        "path": "builders/ncloud"
-      },
-      {
         "title": "Null",
         "path": "builders/null"
-      },
-      {
-        "title": "1&amp;1",
-        "path": "builders/oneandone"
-      },
-      {
-        "title": "OpenStack",
-        "path": "builders/openstack"
-      },
-      {
-        "title": "Oracle",
-        "routes": [
-          {
-            "title": "Overview",
-            "path": "builders/oracle"
-          },
-          {
-            "title": "Oracle Classic",
-            "path": "builders/oracle/classic"
-          },
-          {
-            "title": "Oracle OCI",
-            "path": "builders/oracle/oci"
-          }
-        ]
-      },
-      {
-        "title": "Outscale",
-        "routes": [
-          {
-            "title": "Overview",
-            "path": "builders/outscale"
-          },
-          {
-            "title": "chroot",
-            "path": "builders/outscale/chroot"
-          },
-          {
-            "title": "BSU",
-            "path": "builders/outscale/bsu"
-          },
-          {
-            "title": "BSU Surrogate",
-            "path": "builders/outscale/bsusurrogate"
-          },
-          {
-            "title": "BSU Volume",
-            "path": "builders/outscale/bsuvolume"
-          }
-        ]
-      },
-      {
-        "title": "Parallels",
-        "routes": [
-          {
-            "title": "Overview",
-            "path": "builders/parallels"
-          },
-          {
-            "title": "ISO",
-            "path": "builders/parallels/iso"
-          },
-          {
-            "title": "PVM",
-            "path": "builders/parallels/pvm"
-          }
-        ]
-      },
-      {
-        "title": "ProfitBricks",
-        "path": "builders/profitbricks"
-      },
-      {
-        "title": "Proxmox",
-        "routes": [
-          {
-            "title": "Overview",
-            "path": "builders/proxmox"
-          },
-          {
-            "title": "ISO",
-            "path": "builders/proxmox/iso"
-          },
-          {
-            "title": "Clone",
-            "path": "builders/proxmox/clone"
-          }
-        ]
-      },
-      {
-        "title": "QEMU",
-        "path": "builders/qemu"
-      },
-      {
-        "title": "Scaleway",
-        "path": "builders/scaleway"
-      },
-      {
-        "title": "Tencent Cloud",
-        "path": "builders/tencentcloud-cvm"
-      },
-      {
-        "title": "JDCloud",
-        "path": "builders/jdcloud"
-      },
-      {
-        "title": "Triton",
-        "path": "builders/triton"
-      },
-      {
-        "title": "UCloud",
-        "path": "builders/ucloud-uhost"
-      },
-      {
-        "title": "Vagrant",
-        "path": "builders/vagrant"
-      },
-      {
-        "title": "VirtualBox",
-        "routes": [
-          {
-            "title": "Overview",
-            "path": "builders/virtualbox"
-          },
-          {
-            "title": "ISO",
-            "path": "builders/virtualbox/iso"
-          },
-          {
-            "title": "OVF",
-            "path": "builders/virtualbox/ovf"
-          },
-          {
-            "title": "VM",
-            "path": "builders/virtualbox/vm"
-          }
-        ]
-      },
-      {
-        "title": "VMware",
-        "routes": [
-          {
-            "title": "Overview",
-            "path": "builders/vmware"
-          },
-          {
-            "title": "VMWare ISO",
-            "path": "builders/vmware/iso"
-          },
-          {
-            "title": "VMWare VMX",
-            "path": "builders/vmware/vmx"
-          }
-        ]
-      },
-      {
-        "title": "Yandex.Cloud",
-        "path": "builders/yandex"
       },
       {
         "title": "Custom",
@@ -946,28 +714,8 @@
         "path": "provisioners"
       },
       {
-        "title": "Ansible Local",
-        "path": "provisioners/ansible-local"
-      },
-      {
-        "title": "Ansible (Remote)",
-        "path": "provisioners/ansible"
-      },
-      {
         "title": "Breakpoint",
         "path": "provisioners/breakpoint"
-      },
-      {
-        "title": "Chef Client",
-        "path": "provisioners/chef-client"
-      },
-      {
-        "title": "Chef Solo",
-        "path": "provisioners/chef-solo"
-      },
-      {
-        "title": "Converge",
-        "path": "provisioners/converge"
       },
       {
         "title": "File",
@@ -980,14 +728,6 @@
       {
         "title": "PowerShell",
         "path": "provisioners/powershell"
-      },
-      {
-        "title": "Puppet Masterless",
-        "path": "provisioners/puppet-masterless"
-      },
-      {
-        "title": "Puppet Server",
-        "path": "provisioners/puppet-server"
       },
       {
         "title": "Salt Masterless",
@@ -1027,10 +767,6 @@
         "path": "post-processors"
       },
       {
-        "title": "Alicloud Import",
-        "path": "post-processors/alicloud-import"
-      },
-      {
         "title": "Artifice",
         "path": "post-processors/artifice"
       },
@@ -1043,44 +779,12 @@
         "path": "post-processors/checksum"
       },
       {
-        "title": "DigitalOcean Import",
-        "path": "post-processors/digitalocean-import"
-      },
-      {
-        "title": "Google Compute Export",
-        "path": "post-processors/googlecompute-export"
-      },
-      {
-        "title": "Google Compute Import",
-        "path": "post-processors/googlecompute-import"
-      },
-      {
         "title": "Manifest",
         "path": "post-processors/manifest"
       },
       {
         "title": "Shell (Local)",
         "path": "post-processors/shell-local"
-      },
-      {
-        "title": "UCloud Import",
-        "path": "post-processors/ucloud-import"
-      },
-      {
-        "title": "Vagrant",
-        "path": "post-processors/vagrant"
-      },
-      {
-        "title": "Vagrant Cloud",
-        "path": "post-processors/vagrant-cloud"
-      },
-      {
-        "title": "Yandex.Cloud Compute Export",
-        "path": "post-processors/yandex-export"
-      },
-      {
-        "title": "Yandex.Cloud Compute Import",
-        "path": "post-processors/yandex-import"
       },
       {
         "title": "Community-Supported",
@@ -1133,6 +837,10 @@
             "path": "plugins/creation/custom-datasources"
           }
         ]
+      },
+      {
+        "title": "Packer Integration Program",
+        "path": "plugins/packer-integration-program"
       }
     ]
   },

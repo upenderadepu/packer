@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const grayMatter = require('gray-matter')
 const fetchPluginDocs = require('./fetch-plugin-docs')
+const fetchDevPluginDocs = require('./fetch-dev-plugin-docs')
 const validateFilePaths = require('@hashicorp/react-docs-sidenav/utils/validate-file-paths')
 const validateRouteStructure = require('@hashicorp/react-docs-sidenav/utils/validate-route-structure')
 
@@ -137,9 +138,16 @@ async function resolvePluginEntryDocs(pluginConfigEntry, currentPath) {
     path: slug,
     repo,
     version,
+    pluginTier,
     sourceBranch = 'main',
+    zipFile = '',
   } = pluginConfigEntry
-  const docsMdxFiles = await fetchPluginDocs({ repo, tag: version })
+  var docsMdxFiles
+  if (zipFile !== '') {
+    docsMdxFiles = await fetchDevPluginDocs(zipFile)
+  } else {
+    docsMdxFiles = await fetchPluginDocs({ repo, tag: version })
+  }
   // We construct a special kind of "NavLeaf" node, with a remoteFile property,
   // consisting of a { filePath, fileString, sourceUrl }, where:
   // - filePath is the path to the source file in the source repo
@@ -164,13 +172,14 @@ async function resolvePluginEntryDocs(pluginConfigEntry, currentPath) {
     const sourceUrl = `https://github.com/${repo}/blob/${sourceBranch}/${filePath}`
     // determine pluginTier
     const pluginOwner = repo.split('/')[0]
-    const pluginTier = pluginOwner === 'hashicorp' ? 'official' : 'community'
+    const parsedPluginTier =
+      pluginTier || (pluginOwner === 'hashicorp' ? 'official' : 'community')
     // Construct and return a NavLeafRemote node
     return {
       title,
       path: urlPath,
       remoteFile: { filePath, fileString, sourceUrl },
-      pluginTier,
+      pluginTier: parsedPluginTier,
     }
   })
   //
